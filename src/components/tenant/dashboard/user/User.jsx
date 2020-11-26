@@ -14,22 +14,25 @@ import people from "../../../../assets/people.gif";
 
 import { cpfMask } from "./cpfMask";
 import { rgMask } from "./rgMask";
+import useLocalStorage from "../../../../hooks/useLocalStorage";
 
-function User() {
+function User(props) {
   const [name, setName] = useState("");
   const [nascio, setNascio] = useState("");
   const [civilState, setCivilState] = useState("");
   const [rg, setRg] = useState("");
   const [cpf, setCpf] = useState("");
   const [job, setJob] = useState("");
-  const [form, setForm] = useState({
-    name: "",
-    nascio: "",
-    civilState: "",
-    rg: "",
-    cpf: "",
-    job: "",
-  });
+  const [userData, setUserData] = useLocalStorage("usuario", [
+    {
+      name,
+      nascio,
+      civilState,
+      rg,
+      cpf,
+      job,
+    },
+  ]);
 
   const useStyle = makeStyles((theme) => ({
     root: {
@@ -73,34 +76,35 @@ function User() {
   }));
   const classes = useStyle();
 
-  function changeForm(e) {
-    const { name, value } = e.target;
-
-    setForm({ ...form, [name]: value });
-  }
-
-  function submitForm(e) {
+  const addUser = (e) => {
     e.preventDefault();
-    console.log(form);
+    setUserData([{ name, nascio, civilState, rg, cpf, job }]);
 
-    setForm({
-      name: "",
-      nascio: "",
-      civilState: "",
-      rg: "",
-      cpf: "",
-      job: "",
-    });
-  }
+    clearInputs();
+  };
+
+  const clearInputs = () => {
+    setName("");
+    setNascio("");
+    setCivilState("");
+    setRg("");
+    setCpf("");
+    setJob("");
+  };
+
+  // function submitForm(e) {
+  //   e.preventDefault();
+  //   console.log(form);
+
+  //   clearInputs();
+  // }
   return (
     <Grid container className={classes.root}>
       <Grid item className={classes.item1}>
         <Typography className={classes.title} variant="h3" contain="h1">
           Cadastro de usuário
         </Typography>
-        <form
-          onSubmit={submitForm}
-        >
+        <form onSubmit={addUser}>
           <TextField
             variant="outlined"
             label="Digite seu nome completo"
@@ -135,7 +139,7 @@ function User() {
                 onChange={({ target }) => setCivilState(target.value)}
                 label="Estado Civíl"
               >
-                <MenuItem value=""></MenuItem>
+                <MenuItem value={""}></MenuItem>
                 <MenuItem value={10}>Solteiro(a)</MenuItem>
                 <MenuItem value={20}>Casado(a)</MenuItem>
               </Select>

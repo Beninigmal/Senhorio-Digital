@@ -2,7 +2,10 @@ import React from "react";
 import { Container, makeStyles, Typography } from "@material-ui/core";
 import User from '../user/User'
 
-function Contract({cpfUser}) {
+function Contract(props) {
+  const usuario = JSON.parse(window.localStorage.getItem('usuario'))
+  console.log(usuario[0].name)
+
   const useStyles = makeStyles({
     root: {
       marginTop: "64px",
@@ -19,9 +22,9 @@ function Contract({cpfUser}) {
       <Typography paragraph variant="body1" className={classes.text}>
         LOCADOR: Luis Pereira, brasileiro, casado, aposentado,
         portador da cédula de identidade R.G. nº1111111111 e CPF/MF nº22222222222.
-        LOCATÁRIO: (Nome), (nacionalidade), (estado civil), (profissão),
-        portador da cédula de identidade R.G. nº xxxxxxxxx, e CPF/MF nº
-        xxxxxxxx.
+        LOCATÁRIO: {usuario[0].name}, {usuario[0].nascio}, {usuario[0].civilState}, {usuario[0].job},
+        portador da cédula de identidade R.G. nº {usuario[0].rg}, e CPF/MF nº
+        {usuario[0].cpf}.
         <br />
         CLÁUSULA PRIMEIRA: O objeto deste contrato de locação é o imóvel
         residencial, situado à rua Presidente Medice, 3, Águas Claras,
