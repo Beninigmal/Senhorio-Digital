@@ -1,10 +1,36 @@
-import React from "react";
-import { Container, makeStyles, Typography } from "@material-ui/core";
-import User from '../user/User'
+import React, { useState } from "react";
+import {
+  Container,
+  Fade,
+  Link,
+  makeStyles,
+  Slide,
+  Snackbar,
+  Typography,
+} from "@material-ui/core";
+import User from "../user/User";
 
 function Contract(props) {
-  const usuario = JSON.parse(window.localStorage.getItem('usuario'))
-  console.log(usuario[0].name)
+  const usuario = JSON.parse(window.localStorage.getItem("usuario"));
+
+  const [state, setState] = React.useState({
+    open: false,
+    Transition: Fade,
+  });
+
+  const handleClick = (Transition) => () => {
+    setState({
+      open: true,
+      Transition,
+    });
+  };
+
+  const handleClose = () => {
+    setState({
+      ...state,
+      open: false,
+    });
+  };
 
   const useStyles = makeStyles({
     root: {
@@ -14,17 +40,97 @@ function Contract(props) {
       textAlign: "justify",
       fontFamily: "Roboto",
     },
+    link: {
+      cursor: "pointer",
+    },
   });
   const classes = useStyles();
+
+  function SlideTransition(props) {
+    return <Slide {...props} direction="up" />;
+  }
+
   return (
     <Container maxWidth="md">
-      <Typography variant="h2">Contrato de Aluguel <br /></Typography>
+      <Typography variant="h2">
+        Contrato de Aluguel <br />
+      </Typography>
       <Typography paragraph variant="body1" className={classes.text}>
-        LOCADOR: Luis Pereira, brasileiro, casado, aposentado,
-        portador da cédula de identidade R.G. nº1111111111 e CPF/MF nº22222222222.
-        LOCATÁRIO: {usuario[0].name}, {usuario[0].nascio}, {usuario[0].civilState}, {usuario[0].job},
-        portador da cédula de identidade R.G. nº {usuario[0].rg}, e CPF/MF nº
-        {usuario[0].cpf}.
+        LOCADOR: Luis Pereira, brasileiro, casado, aposentado, portador da
+        cédula de identidade R.G. nº1111111111 e CPF/MF nº22222222222.
+        LOCATÁRIO:{" "}
+        {usuario ? (
+          usuario[0].name
+        ) : (
+          <Link
+            className={classes.link}
+            underline="none"
+            onClick={handleClick(SlideTransition)}
+          >
+            "Nome do inquilino"
+          </Link>
+        )}
+        ,{" "}
+        {usuario ? (
+          usuario[0].nacio
+        ) : (
+          <Link
+            className={classes.link}
+            underline="none"
+            onClick={handleClick(SlideTransition)}
+          >
+            "nacionalidade"
+          </Link>
+        )}
+        ,{" "}
+        {usuario ? (
+          usuario[0].civilState
+        ) : (
+          <Link
+            className={classes.link}
+            underline="none"
+            onClick={handleClick(SlideTransition)}
+          >
+            "estado cívil"
+          </Link>
+        )}
+        ,{" "}
+        {usuario ? (
+          usuario[0].job
+        ) : (
+          <Link
+            className={classes.link}
+            underline="none"
+            onClick={handleClick(SlideTransition)}
+          >
+            "profissão"
+          </Link>
+        )}
+        , portador da cédula de identidade R.G. nº{" "}
+        {usuario ? (
+          usuario[0].rg
+        ) : (
+          <Link
+            className={classes.link}
+            underline="none"
+            onClick={handleClick(SlideTransition)}
+          >
+            "RG"
+          </Link>
+        )}
+        , e CPF/MF nº
+        {usuario ? (
+          usuario[0].cpf
+        ) : (
+          <Link
+            className={classes.link}
+            underline="none"
+            onClick={handleClick(SlideTransition)}
+          >
+            "CPF"
+          </Link>
+        )}
+        .
         <br />
         CLÁUSULA PRIMEIRA: O objeto deste contrato de locação é o imóvel
         residencial, situado à rua Presidente Medice, 3, Águas Claras,
@@ -149,6 +255,13 @@ function Contract(props) {
         instrumento em três (03) vias, para um só efeito, assinando-as,
         juntamente com as testemunhas, a tudo presentes.
       </Typography>
+      <Snackbar
+        open={state.open}
+        onClose={handleClose}
+        TransitionComponent={state.Transition}
+        message="Preencha os seus dados na página de cadastro!"
+        key={state.Transition.name}
+      />
     </Container>
   );
 }

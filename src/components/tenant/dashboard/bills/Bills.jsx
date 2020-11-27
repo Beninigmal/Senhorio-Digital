@@ -172,6 +172,8 @@ function Bills(theme) {
         <Typography>Clique aqui para tirar a 2ª via</Typography>
         <Button
           className={classes.button}
+          target="_blank"
+          rel="noopener noreferrer"
           href="https://servicos.coelba.com.br/servicos-ao-cliente/Pages/login-av.aspx?UrlUc=http://servicos.coelba.com.br/servicos-ao-cliente/Pages/2-via-de-conta-coelba.aspx"
         >
           <img className={classes.img} src={Coelba} />

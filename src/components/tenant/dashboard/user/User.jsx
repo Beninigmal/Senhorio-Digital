@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import {
   Button,
+  Fade,
   FormControl,
   Grid,
   InputLabel,
   makeStyles,
   MenuItem,
   Select,
+  Slide,
+  Snackbar,
   TextField,
   Typography,
 } from "@material-ui/core";
@@ -18,7 +21,7 @@ import useLocalStorage from "../../../../hooks/useLocalStorage";
 
 function User(props) {
   const [name, setName] = useState("");
-  const [nascio, setNascio] = useState("");
+  const [nacio, setNacio] = useState("");
   const [civilState, setCivilState] = useState("");
   const [rg, setRg] = useState("");
   const [cpf, setCpf] = useState("");
@@ -26,7 +29,7 @@ function User(props) {
   const [userData, setUserData] = useLocalStorage("usuario", [
     {
       name,
-      nascio,
+      nacio,
       civilState,
       rg,
       cpf,
@@ -73,31 +76,59 @@ function User(props) {
     selectEmpty: {
       marginTop: theme.spacing(2),
     },
+    snackbarSuccess:{
+      backgroundColor: 'green',
+
+    }
   }));
+
   const classes = useStyle();
 
+  //-----------snackbar success-----------
+  function SlideTransition(props) {
+    return <Slide {...props} direction="up" />;
+  }
+  const [state, setState] = useState({
+    open: false,
+    Transition: Fade,
+  });
+  const handleClick = (Transition) => () => {
+    setState({
+      open: true,
+      Transition,
+    });
+  };
+  const handleError = (Transition) => () => {
+    setState({
+      open: true,
+      Transition,
+    });
+  };
+
+  const handleClose = () => {
+    setState({
+      ...state,
+      open: false,
+    });
+  };
+  //-----------------------------------------//
+ 
   const addUser = (e) => {
     e.preventDefault();
-    setUserData([{ name, nascio, civilState, rg, cpf, job }]);
+    setUserData([{ name, nacio, civilState, rg, cpf, job }]);
 
     clearInputs();
   };
 
   const clearInputs = () => {
     setName("");
-    setNascio("");
+    setNacio("");
     setCivilState("");
     setRg("");
     setCpf("");
     setJob("");
   };
 
-  // function submitForm(e) {
-  //   e.preventDefault();
-  //   console.log(form);
-
-  //   clearInputs();
-  // }
   return (
     <Grid container className={classes.root}>
       <Grid item className={classes.item1}>
@@ -121,9 +152,9 @@ function User(props) {
               variant="outlined"
               label="Nacionalidade"
               required
-              name="nascio"
-              value={nascio}
-              onChange={({ target }) => setNascio(target.value)}
+              name="nacio"
+              value={nacio}
+              onChange={({ target }) => setNacio(target.value)}
               margin="normal"
             />
 
@@ -140,8 +171,8 @@ function User(props) {
                 label="Estado Civíl"
               >
                 <MenuItem value={""}></MenuItem>
-                <MenuItem value={10}>Solteiro(a)</MenuItem>
-                <MenuItem value={20}>Casado(a)</MenuItem>
+                <MenuItem value={"solteiro(a)"}>Solteiro(a)</MenuItem>
+                <MenuItem value={"casado(a)"}>Casado(a)</MenuItem>
               </Select>
             </FormControl>
           </Grid>
@@ -180,15 +211,24 @@ function User(props) {
             onChange={({ target }) => setJob(target.value)}
             margin="normal"
           />
+
           <Button
             className={classes.button}
             variant="contained"
             color="primary"
             fullWidth
             type="submit"
+            onClick={nacio !== '' ? handleClick(SlideTransition) : ''}
           >
             Cadastrar
           </Button>
+          <Snackbar
+            open={state.open}
+            onClose={handleClose}
+            TransitionComponent={state.Transition}
+            message="Cadastrado com sucesso!"
+            key={state.Transition.name}
+          />
         </form>
       </Grid>
       <Grid item className={classes.item2}>
