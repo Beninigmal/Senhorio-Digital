@@ -46,6 +46,7 @@ function User(props) {
       minHeight: "calc(100vh - 68px)",
       justifyContent: "center",
       alignItems: "center",
+      flexWrap: 'wrap'
     },
     item1: {
       height: "100%",
@@ -132,7 +133,7 @@ function User(props) {
   return (
     <Grid container className={classes.root}>
       <Grid item className={classes.item1}>
-        <Typography className={classes.title} variant="h3" contain="h1">
+        <Typography className={classes.title} variant="h3" contain="h1" gutterBottom>
           Cadastro de usuário
         </Typography>
         <form onSubmit={addUser}>
@@ -176,7 +177,7 @@ function User(props) {
               </Select>
             </FormControl>
           </Grid>
-          <Grid item className={classes.inputContainer}>
+          <Grid sm={12} xs={12} item className={classes.inputContainer}>
             <TextField
               className={classes.inputSettings}
               variant="outlined"

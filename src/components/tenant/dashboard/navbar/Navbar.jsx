@@ -15,7 +15,6 @@ import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import HomeIcon from "@material-ui/icons/Home";
 import { Button } from "@material-ui/core";
 import AccountBoxTwoToneIcon from "@material-ui/icons/AccountBoxTwoTone";
 import {
@@ -116,24 +115,24 @@ function Navbar({ handleLogOut, history }) {
 
   const itemList = [
     {
-      text: "Usuário",
-      icon: <AccountBoxTwoToneIcon className={classes.icon} />,
-      path: "/usuario",
-    },
-    {
       text: "Informações",
       icon: <AnnouncementTwoTone className={classes.icon} />,
       path: "/",
     },
     {
-      text: "Contas",
-      icon: <AttachMoneyTwoTone className={classes.icon} />,
-      path: "/contas",
+      text: "Usuário",
+      icon: <AccountBoxTwoToneIcon className={classes.icon} />,
+      path: "/usuario",
     },
     {
       text: "Contrato",
       icon: <AssignmentTwoTone className={classes.icon} />,
       path: "/contrato",
+    },
+    {
+      text: "Contas",
+      icon: <AttachMoneyTwoTone className={classes.icon} />,
+      path: "/contas",
     },
   ];
 
@@ -208,8 +207,8 @@ function Navbar({ handleLogOut, history }) {
           })}
         </List>
       </Drawer>
+
       <main className={classes.content}>
-        
         <div className={classes.toolbar} />
       </main>
     </div>
