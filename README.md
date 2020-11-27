@@ -1,70 +1,50 @@
-# Getting Started with Create React App
+<h1 align="center" font-size="35px">Senhorio Digital</h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<p align="center">
 
-## Available Scripts
+Devido a pandemia do Covid-19, efetuar transações físicas se torna letal principalmente quando ídosos, pessoas com obesidade ou pessoas do grupo de risco em geral tem que participar desse contato. No nosso caso trata-se de um gerenciamento de inquilinos em casas de aluguel, onde para cada inquilino é necessário ter um contrato de aluguel, contas de energia e o pagamento da mensalidade da casa. Com todas essas informações foi identificado que dá para automátizar o processo tornando as ações digitais, trazendo mais segurança para ambas as partes.
+</p>
 
-In the project directory, you can run:
+<h2 align="left">Tecnologias utilizadas</h2>
 
-### `yarn start`
+- React 17.0.1
+- API Firebase 8.0.2
+- Material-UI
+- React-router-dom
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+<p align="left">
+Para iniciar o projeto clone o repositorio no seu terminal com o comando 'git clone https://github.com/Beninigmal/Senhorio-Digital.git', e após isso digite 'npm install' na pasta onde foi clonada para que as dependencias sejam baixadas, para executar no https://localhost:3000 digite o comando 'npm start'.
+</p>
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+<h2 align="center">Sobre a aplicação</h2>
 
-### `yarn test`
+<p>Ao primeiro acesso a aplicação web, é necessário uma autenticão por e-mail, portanto o usuário deverá ter um cadastro<p/>
+<p align="center">
+<img src="./1.png" width="1000" />
+</p>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<p>Logo após efetuado o cadastro/login a tela de informações é carregada com algumas informações como comunicados</p>
+<p align="center">
+<img src="./2.png" width="1000" />
+</p>
 
-### `yarn build`
+<p>A próxima tela para seguir um fluxo seria a do contrato, nela é observador que os campos com as informações do inquilino se mostram com uma cor destacada e ao clicar um \"snackbar"\ aparece solicitando que o cadastro seja feito na tela de cadastro.</p>
+<p align="center">
+<img src="./4.png" width="1000" />
+<img src="./5.png" width="1000" />
+<p/>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<p>Agora voltando para a tela de contrato podemos observar que os locais estão preenchidos com os dados cadastrados desaparecendo com os destaques anteriores.</p>
+<p align="center">
+  <img src="./6.png" width="1000"/>
+</p>
+<p>A próxima tela mostra a parte relacionado as contas onde é mostrado os meses contratados,onde os meses a pagar estão em verde musgo e os meses pagos estão com um ícone de sucesso, demonstrando que aquele mês foi pago, junto a isso tem a área de 2ª via de contas de energia, de forma que será redirecionado em nova aba para o site da Coelba</p>
+<p align="center">
+  <img src="./7.png" width="1000" />
+</p>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<h2 align="center">Status do projeto</h2>
+<p>O projeto está ainda em fase inicial de desenvolvimento, sendo necessário criar muitas features, incluíndo a vísão do senhorio e uma visão de ADM, assim como outras funções como organizador de comprovantes de pagamentos de contas de energia, área de comunicação com o senhorio, hover para cada mês pago com recibo digital, entre outras coisas, que depende de conhecimentos especificos para serem aplicadas.</p>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<h2 align="center">Talent Sprint</h2>
+<p> Esse projeto foi desenvolvido para o Talent Sprint Solutis em aproximadamente duas semanas, onde particularmente me sinto muito bem com a quantidade de conteúdo absorvido, com cada bug resolvido, e com o apoio principalmente dos colegas do treinamento React que são feras!</p>
