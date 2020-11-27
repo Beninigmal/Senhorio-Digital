@@ -6,14 +6,15 @@ function Information() {
     root: {
       display: "flex",
       flexDirection: "column",
-      justifyContent: "center",
       alignItems: "center",
-      maxWidth: "75vw",
+      maxWidth: "60vw",
+      minHeight: "70vh",
+      marginTop: "10%",
+      backgroundColor: "#fff"
       
     },
     text: {
-      marginTop: "40px",
-      fontSize: "25px",
+      fontSize: "2rem",
       fontFamily: "Roboto",
       textAlign: "justify"
     },
@@ -21,7 +22,6 @@ function Information() {
         fontSize: 'xx-large',
         fontFamily: 'Lobster',
         fontWeight: 'lighter',
-        paddingTop: '30px',
         fontStyle: 'italic'
     }
   }));

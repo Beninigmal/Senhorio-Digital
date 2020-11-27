@@ -3,7 +3,6 @@ import "./App.css";
 import fire from "./fire";
 import SignInSide from "./components/login/SignInSide";
 import Rotas from "./components/rotas/Rotas";
-import useLocalStorage from "./hooks/useLocalStorage";
 
 function App() {
   const [user, setUser] = useState("");
@@ -12,16 +11,7 @@ function App() {
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [hasAccount, setHasAccount] = useState(false);
-  const [userData, setUserData] = useLocalStorage("usuario", [
-    {
-      name: "nome do locatário",
-      nascio: "nacionalidade",
-      civilState: "estado cívil",
-      rg: "número do RG",
-      cpf: "número do CPF",
-      job: "profissão",
-    },
-  ])
+
 
   const clearInputs = () => {
     setEmail("");

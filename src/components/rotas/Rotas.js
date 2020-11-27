@@ -1,5 +1,4 @@
 import React from "react";
-import Dashboard from "../tenant/dashboard/Dashboard";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Bills from "../tenant/dashboard/bills/Bills";
 import Information from "../tenant/dashboard/information/Information";

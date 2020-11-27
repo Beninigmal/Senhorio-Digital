@@ -7,7 +7,7 @@ import Link from "@material-ui/core/Link";
 import Paper from "@material-ui/core/Paper";
 import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
-import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
+import login from "../../assets/login.gif";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import buildHouse from "../../assets/buildHome.gif"
@@ -47,8 +47,11 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
   },
   avatar: {
-    margin: theme.spacing(1),
+    margin: theme.spacing(2),
     backgroundColor: theme.palette.secondary.main,
+    width: '130px',
+    height: '130px',
+
   },
   form: {
     width: "100%",
@@ -67,6 +70,7 @@ const useStyles = makeStyles((theme) => ({
       color: 'tomato'
     }
   }
+ 
 }));
 
 export default function SignInSide(props) {
@@ -101,7 +105,7 @@ export default function SignInSide(props) {
       <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
         <div className={classes.paper}>
           <Avatar className={classes.avatar}>
-            <LockOutlinedIcon />
+            <img src={login} />
           </Avatar>
           <Typography component="h1" variant="h5">
             Sign in
@@ -120,6 +124,7 @@ export default function SignInSide(props) {
               value={email}
               onChange={({ target }) => setEmail(target.value)}
             />
+            <p className="errorMsg">{emailError}</p>
             <TextField
               variant="outlined"
               margin="normal"
@@ -133,6 +138,8 @@ export default function SignInSide(props) {
               value={password}
               onChange={({ target }) => setPassword(target.value)}
             />
+            <p className="errorMsg">{passwordError}</p>
+
             <div>
               {hasAccount ? (
                 <>
